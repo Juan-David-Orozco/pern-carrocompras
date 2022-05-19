@@ -78,7 +78,6 @@ function App() {
             element={
               <ProductsList
                 ingreso={ingreso}
-                //user={user}
                 updateCarroCompra={updateCarroCompra}
               />
             }
@@ -100,7 +99,6 @@ function App() {
             element={
               <CarroCompra
                 ingreso={ingreso}
-                //user={user}
                 carroCompra={carroCompra}
                 deleteCarroCompra={deleteCarroCompra}
               />

@@ -1,19 +1,14 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function ProductsList(props) {
 
   const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState({id:"", contenido:"", titulo:""})
-  const [ingreso, SetIngreso] = useState(props.ingreso)
-  const [user, setUser] = useState(props.user)
-  
-  const navigate = useNavigate();
+  const [product, setProduct] = useState({id:"", contenido:"", titulo:"", precio:0})
+  const [ingreso] = useState(props.ingreso)
 
   const loadProducts = async () => {
     const response = await fetch("http://localhost:9000/products");
     const data = await response.json();
-    console.log(data)
     setProducts(data);
   };
 
@@ -22,10 +17,7 @@ export default function ProductsList(props) {
   }, []);
 
   const agregarCompra = async (producto) => {
-    //console.log(product)
-    const product_id = producto.id
-    const user_id = user.id
-    console.log(product_id, user_id)
+    //console.log(producto)
     setProduct(producto)
     props.updateCarroCompra(producto)
   }
@@ -40,17 +32,18 @@ export default function ProductsList(props) {
           products.map((product) => (
             <div className="col-md-6 p-2 mt-1" key={product.id}>
               <div className="card">
-                <div className="card-header">
-                  <h5>{product.titulo}</h5>
+                <div className="card-header bg-dark">
+                  <h5 className="text-white mb-0">{product.titulo}</h5>
                 </div>
                 <div className="card-body">
-                  <img src={product.contenido} />
+                  <p> {product.contenido} </p>
+                  <p className="text-primary mb-0"> 
+                    <b> $ {new Intl.NumberFormat("de-DE").format(product.precio)} </b>
+                  </p>
                 </div>
                 <div className={"card-header " + mostrarCompra}>
                   <button
                     className="btn btn-warning"
-                    //onClick={() => console.log(product.id)}
-                    //onClick={() => navigate(`/${product.id}`)}
                     onClick={() => agregarCompra(product)}
                   >
                     Comprar

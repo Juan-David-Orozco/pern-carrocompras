@@ -72,7 +72,7 @@ export default function Sesion(props) {
           <div className="col-5">
             Bienvenido al sistema
           </div>
-          <div className="col-7 border rounded mx-auto">
+          <div className="col-6 bg-dark rounded text-white mx-auto ">
             <i className="fa fa-user pr-2"></i> <b>Usuario: </b>
             <i> {user.email} </i>
           </div>
