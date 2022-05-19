@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function Navigation(props) {
+export default function Navigation() {
   return(
     <nav className="navbar bg-dark p-3">
       <div className="container">
